@@ -34,9 +34,7 @@ package Asturum_Regnum;
 		private JTable table;
 		private JTextField textId;
 
-		/**
-		 * Launch the application.
-		 */
+		
 		public static void main(String[] args) {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
@@ -50,9 +48,7 @@ package Asturum_Regnum;
 			});
 		}
 
-		/**
-		 * Create the application.
-		 */
+	
 		public Rex() {
 			initialize();
 			connect();
