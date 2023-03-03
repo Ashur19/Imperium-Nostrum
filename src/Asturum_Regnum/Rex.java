@@ -83,7 +83,7 @@ package Asturum_Regnum;
 				rs = pt.executeQuery();
 				table.setModel(DbUtils.resultSetToTableModel(rs));
 			} catch (Exception e) {
-				// TODO: handle exception
+			
 			}
 			
 		}
