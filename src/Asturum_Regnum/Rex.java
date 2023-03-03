@@ -20,6 +20,8 @@ package Asturum_Regnum;
 	import java.awt.event.ActionEvent;
 
 	import net.proteanit.sql.DbUtils;
+import javax.swing.border.EtchedBorder;
+import java.awt.Color;
 
 	public class Rex {
 
@@ -102,7 +104,7 @@ package Asturum_Regnum;
 			frame.getContentPane().add(lblNewLabel);
 			
 			JPanel panel = new JPanel();
-			panel.setBorder(new TitledBorder(null, "Datos del Monarca", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			panel.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Data Regi", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 			panel.setBounds(35, 98, 295, 265);
 			frame.getContentPane().add(panel);
 			panel.setLayout(null);
@@ -184,7 +186,7 @@ package Asturum_Regnum;
 			table = new JTable();
 			scrollPane.setViewportView(table);
 			
-			JButton btnNewButton = new JButton("Save");
+			JButton btnNewButton = new JButton("Adnotare");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
@@ -208,7 +210,7 @@ package Asturum_Regnum;
 						pt.setString(6, prae);
 						pt.setString(7, suc);
 						pt.executeUpdate();
-						JOptionPane.showMessageDialog(null, "Rex inserted");
+						JOptionPane.showMessageDialog(null, "Rex novus coronatus est!");
 						table_load();
 						textNomen.setText("");
 						textNatio.setText("");
@@ -227,7 +229,7 @@ package Asturum_Regnum;
 			btnNewButton.setBounds(45, 373, 85, 42);
 			frame.getContentPane().add(btnNewButton);
 			
-			JButton btnNewButton_2 = new JButton("Clear");
+			JButton btnNewButton_2 = new JButton("Tersus\r\n");
 			btnNewButton_2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
@@ -246,7 +248,7 @@ package Asturum_Regnum;
 			btnNewButton_2.setBounds(235, 373, 85, 42);
 			frame.getContentPane().add(btnNewButton_2);
 			
-			JButton btnNewButton_1 = new JButton("Exit");
+			JButton btnNewButton_1 = new JButton("Claudere");
 			btnNewButton_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					System.exit(0);
@@ -256,12 +258,12 @@ package Asturum_Regnum;
 			frame.getContentPane().add(btnNewButton_1);
 			
 			JPanel panel_1 = new JPanel();
-			panel_1.setBorder(new TitledBorder(null, "Search", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+			panel_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Archivum", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 			panel_1.setBounds(35, 425, 295, 42);
 			frame.getContentPane().add(panel_1);
 			panel_1.setLayout(null);
 			
-			JLabel lblNewLabel_8 = new JLabel("King ID");
+			JLabel lblNewLabel_8 = new JLabel("Rex ID");
 			lblNewLabel_8.setBounds(58, 10, 45, 22);
 			panel_1.add(lblNewLabel_8);
 			
@@ -320,13 +322,13 @@ package Asturum_Regnum;
 			panel_1.add(textId);
 			textId.setColumns(10);
 			
-			JButton btnNewButton_3 = new JButton("Update");
+			JButton btnNewButton_3 = new JButton("Renovatio");
 			btnNewButton_3.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
 					String id, nomen, natio, mors, tempus, uxor, prae, suc;
 					
-					id = textId.getText();
+					
 					nomen = textNomen.getText();
 					natio = textNatio.getText();
 					mors = textMors.getText();
@@ -334,19 +336,21 @@ package Asturum_Regnum;
 					uxor = textUxor.getText();
 					prae = textPrae.getText();
 					suc = textSuc.getText();
+					id = textId.getText();
 					
 					try {
-						pt = conn.prepareStatement("UPDATE rex SET Nomen = ?, Natio = ?, Mors = ?, Tempus = ?, Uxor = ?, Praedecessor = ?, Sucessor = ? WHERE Id = ?");
-						pt.setString(1, id);
-						pt.setString(2, nomen);
-						pt.setString(3, natio);
-						pt.setString(4, mors);
-						pt.setString(5, tempus);
-						pt.setString(6, uxor);
-						pt.setString(7, prae);
-						pt.setString(8, suc);
+						pt = conn.prepareStatement("update rex set Nomen = ?, Natio = ?, Mors = ?, Tempus = ?, Uxor = ?, Praedecessor = ?, Sucessor = ? WHERE Id = ?");
+						
+						pt.setString(1, nomen);
+						pt.setString(2, natio);
+						pt.setString(3, mors);
+						pt.setString(4, tempus);
+						pt.setString(5, uxor);
+						pt.setString(6, prae);
+						pt.setString(7, suc);
+						pt.setString(8, id );
 						pt.executeUpdate();
-						JOptionPane.showMessageDialog(null, "Regnum updated!");
+						JOptionPane.showMessageDialog(null, "Renovatio Regni!");
 						table_load();
 						textNomen.setText("");
 						textNatio.setText("");
@@ -367,7 +371,7 @@ package Asturum_Regnum;
 			btnNewButton_3.setBounds(467, 431, 125, 21);
 			frame.getContentPane().add(btnNewButton_3);
 			
-			JButton btnNewButton_4 = new JButton("Delete");
+			JButton btnNewButton_4 = new JButton("Damnatio");
 			btnNewButton_4.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
